@@ -43,7 +43,7 @@ export default function InstructionPage() {
         How to Use Unfollower Checker 💡
       </h1>
       <p className="text-gray-400 mt-2 text-xs sm:text-xs md:text-sm max-w-3xl mx-auto text-center">
-        Easily find out who’s not following you back! All processes run entirely in your browser — your data is never sent anywhere, so it’s 100% safe and private.
+        Easily find out whos not following you back! All processes run entirely in your browser — your data is never sent anywhere, so its 100% safe and private.
       </p>
 
       <div className="mt-8 bg-[#FAFAFA] border border-[#F0F0F0] p-4 sm:p-6 md:p-8 rounded-2xl space-y-5 sm:space-y-6">

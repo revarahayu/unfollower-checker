@@ -1,14 +1,19 @@
 'use client';
 import React from 'react';
+import { Unfollower } from '@/types/instagram';
 
-export default function UnfollowerList({ unfollowers }: any) {
+interface UnfollowerListProps {
+  unfollowers: Unfollower[];
+}
+
+export default function UnfollowerList({ unfollowers }: UnfollowerListProps) {
   return (
     <div className="mt-12 mb-10">
       <h2 className="text-left text-2xl font-semibold text-gray-800 mb-4">
         Unfollowing accounts:
       </h2>
       <div className="flex flex-wrap gap-2.5 max-w-full overflow-x-auto">
-        {unfollowers.map((u: any, i: number) => (
+        {unfollowers.map((u, i) => (
           <a
             key={i}
             href={u.profileUrl}

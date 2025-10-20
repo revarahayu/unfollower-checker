@@ -2,8 +2,19 @@
 import React, { useState } from 'react';
 import { FileArrowUp } from 'phosphor-react';
 import toast from 'react-hot-toast';
+import { 
+  FollowerData, 
+  InstagramFollowingResponse, 
+  Unfollower, 
+  Stats 
+} from '@/types/instagram';
 
-export default function UploadSection({ setUnfollowers, setStats }: any) {
+interface UploadSectionProps {
+  setUnfollowers: (unfollowers: Unfollower[]) => void;
+  setStats: (stats: Stats) => void;
+}
+
+export default function UploadSection({ setUnfollowers, setStats }: UploadSectionProps) {
   const [followersFile, setFollowersFile] = useState<File | null>(null);
   const [followingFile, setFollowingFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -25,7 +36,7 @@ export default function UploadSection({ setUnfollowers, setStats }: any) {
     }
   };
 
-  const readFileAsJSON = (file: File): Promise<any> =>
+  const readFileAsJSON = <T,>(file: File): Promise<T> =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = e => {
@@ -46,19 +57,19 @@ export default function UploadSection({ setUnfollowers, setStats }: any) {
 
     setLoading(true);
     try {
-      const followersData = await readFileAsJSON(followersFile);
-      const followingData = await readFileAsJSON(followingFile);
+      const followersData = await readFileAsJSON<FollowerData[]>(followersFile);
+      const followingData = await readFileAsJSON<InstagramFollowingResponse>(followingFile);
 
       const followersSet = new Set<string>();
-      followersData.forEach((f: any) =>
-        f.string_list_data.forEach((d: any) => followersSet.add(d.value))
+      followersData.forEach((f) =>
+        f.string_list_data.forEach((d) => followersSet.add(d.value))
       );
 
-      const unfollowers = followingData.relationships_following
-        .filter((u: any) => !followersSet.has(u.title))
-        .map((u: any) => ({
+      const unfollowers: Unfollower[] = followingData.relationships_following
+        .filter((u) => !followersSet.has(u.title))
+        .map((u) => ({
           username: u.title,
-          profileUrl: u.string_list_data[0]?.href?.replace('/_u/', '/'),
+          profileUrl: u.string_list_data[0]?.href?.replace('/_u/', '/') || '',
         }));
 
       setUnfollowers(unfollowers);
@@ -69,8 +80,9 @@ export default function UploadSection({ setUnfollowers, setStats }: any) {
       });
 
       toast.success('Successfully compared followers!');
-    } catch (err: any) {
-      toast.error(err.message || 'Something went wrong while processing the files.');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Something went wrong while processing the files.';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

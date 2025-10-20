@@ -5,17 +5,18 @@ import UploadSection from "@/components/UploadSection";
 import StatsSection from "@/components/StatsSection";
 import UnfollowerList from "@/components/UnfollowersList";
 import InstructionPage from "@/components/IntructionPage";
+import { Stats, Unfollower } from "@/types/instagram";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<"checker" | "instruction">(
     "checker"
   );
-  const [stats, setStats] = useState({
+  const [stats, setStats] = useState<Stats>({
     totalFollowing: 0,
     totalFollowers: 0,
     unfollowersCount: 0,
   });
-  const [unfollowers, setUnfollowers] = useState<any[]>([]);
+  const [unfollowers, setUnfollowers] = useState<Unfollower[]>([]);
 
   return (
     <div className="min-h-screen bg-white py-8 px-4 sm:px-6 md:px-8">
@@ -28,7 +29,7 @@ export default function Page() {
               Welcome to Unfollower Checker!
             </h1>
             <p className="text-gray-400 mt-2 text-xs sm:text-xs md:text-sm max-w-3xl mx-auto text-center">
-              Ever wondered who’s not following you back? With Unfollower
+              Ever wondered whos not following you back? With Unfollower
               Checker, you can easily upload your data and see all your
               unfollowers in just a few seconds.
             </p>
