@@ -4,36 +4,36 @@ import React from 'react';
 export default function InstructionPage() {
   const steps = [
     {
-      title: 'Open Instagram Settings',
-      desc: 'Open the Instagram app → Go to your profile → Tap the menu (☰) → Select Settings and activity',
+      title: "Open Instagram Settings",
+      desc: "Open the Instagram app → Go to your profile → Tap the menu (☰) → Select Settings and activity.",
     },
     {
-      title: 'Download Your Information',
-      desc: 'Go to Your activity → Download your information → Request a download',
+      title: "Download Your Information",
+      desc: "Go to Your activity → Download your information → Request a download.",
     },
     {
-      title: 'Choose JSON Format',
-      desc: 'Under Format, select JSON (not HTML)',
+      title: "Choose JSON Format",
+      desc: "Under Format, select JSON (not HTML).",
     },
     {
-      title: 'Select Date Range',
-      desc: 'Under Date range, choose All time',
+      title: "Select Date Range",
+      desc: "Under Date range, choose All time.",
     },
     {
-      title: 'Select Custom Information',
-      desc: 'Select or check Followers and Following only. Uncheck the rest to make the process faster.',
+      title: "Select Custom Information",
+      desc: "Check only Followers and Following. Uncheck everything else to speed up the process.",
     },
     {
-      title: 'Submit Request',
-      desc: 'Tap Submit request and wait for Instagram’s email (usually takes 5–15 minutes)',
+      title: "Submit Request",
+      desc: "Tap Submit request and wait for Instagrams email (usually 5-15 minutes).",
     },
     {
-      title: 'Download & Extract Files',
-      desc: 'Open the email, download the ZIP file, extract it, and locate the followers_and_following folder.',
+      title: "Download the ZIP File",
+      desc: "Open the email from Instagram and download the ZIP file to your device.",
     },
     {
-      title: 'Upload Files',
-      desc: 'Upload both followers_1.json and following.json to this tool, then click Check Unfollowers.',
+      title: "Upload ZIP to This Tool",
+      desc: "Upload the ZIP file directly here, then click Check Followers. The app will automatically extract and process everything for you.",
     },
   ];
 
